@@ -17,6 +17,7 @@ It is up to you what else to support.
 We care about
 
 - Have you thought through what a good MVP looks like? Does your API support that?
+
 **According to me Good MVP for calendly APP:**
 1. Book any type of event 1:1, 1:many, reminders [Supported]
 2. Book recurring events with no limitation on rule [Supported]
@@ -28,9 +29,11 @@ We care about
 8. Set notification alert setting for event reminders [NotSupported]
 
 - What trade-offs are you making in your design?
+
 **For recurring events, some end date is necessary for notification service if extension is done**
 
 - Working code - we should be able to pull and hit the code locally. Bonus points if deployed somewhere.
+
 **Application is deployed on AWS & this is swagger link (http://ec2-54-89-71-237.compute-1.amazonaws.com/docs#/)**
 
 - Any good engineer will make hacks when necessary - what are your hacks and why?
