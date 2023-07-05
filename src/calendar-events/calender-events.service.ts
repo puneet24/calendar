@@ -78,11 +78,6 @@ export class CalendarEventsService {
         const blockedMeetingSlots = await this.findBlockedMeetingSlots(userId, fromDate, toDate);
         const blockedTimeIntervals = getBusySlotsTimeInterval(blockedMeetingSlots);
         return blockedTimeIntervals;
-        // let blockedCalendarTimeIntervals: Slot[] = [];
-        // if (user?.calendarSetting) {
-        //     blockedCalendarTimeIntervals = await this.calendarSettingsService.findCalendarSettingOofRruleSlots(user.calendarSetting.id, fromDate, toDate);
-        // }
-        // return getUnionSlots(blockedCalendarTimeIntervals, blockedTimeIntervals);
     }
 
     async findFreeSlots(userId: number, fromDate: Date, toDate: Date) {
@@ -112,14 +107,23 @@ export class CalendarEventsService {
         return this.calendarEventRepository.findOne({ where: { id: id, users: ArrayContains([user]) } })
     }
 
-    //   update(id: number, payload: DeepPartial<User>): Promise<User> {
-    //     return this.usersRepository.save(
-    //       this.usersRepository.create({
-    //         id,
-    //         ...payload,
-    //       }),
-    //     );
-    //   }
+    async update(id: number, updateCalendarEventDto: CreateCalendarEventDto, user: User): Promise<NullableType<CalendarEvent>> {
+        let calendarEvent = await this.calendarEventRepository.findOne({ where: { id: id } })
+        if (calendarEvent) {
+            if (updateCalendarEventDto.guestList && updateCalendarEventDto.guestList.length > 0) {
+                calendarEvent.users = await this.userService.findByIds(updateCalendarEventDto.guestList);
+            }
+            calendarEvent.description = updateCalendarEventDto.description
+            calendarEvent.name = updateCalendarEventDto.name;
+            calendarEvent.rrule = updateCalendarEventDto.rrule;
+            calendarEvent.type = updateCalendarEventDto.type;
+            calendarEvent.startDate = new Date(updateCalendarEventDto.startDate)
+            calendarEvent.endDate = new Date(updateCalendarEventDto.endDate)
+            calendarEvent.primaryHost = user;
+            return this.calendarEventRepository.save(calendarEvent)
+        }
+        return null
+    }
 
     async softDelete(id: number, user: User): Promise<void> {
         await this.calendarEventRepository.softDelete({ id: id, users: ArrayContains([user]) });
