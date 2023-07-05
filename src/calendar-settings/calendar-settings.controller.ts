@@ -1,31 +1,25 @@
 import {
-    Controller,
-    Get,
-    Post,
     Body,
-    Request,
-    Patch,
-    Param,
+    Controller,
     Delete,
-    UseGuards,
-    Query,
-    DefaultValuePipe,
-    ParseIntPipe,
-    HttpStatus,
+    Get,
     HttpCode,
+    HttpStatus,
+    Patch,
+    Post,
+    Request,
     SerializeOptions,
+    UseGuards
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/roles/roles.decorator';
 import { RoleEnum } from 'src/roles/roles.enum';
-import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/roles/roles.guard';
-import { infinityPagination } from 'src/utils/infinity-pagination';
-import { InfinityPaginationResultType } from '../utils/types/infinity-pagination-result.type';
 import { NullableType } from '../utils/types/nullable.type';
-import { CalendarSetting } from './entities/calendar-setting.entity';
 import { CalendarSettingsService } from './calendar-settings.service';
 import { CreateUpdateCalendarSettingDto } from './dto/create-update-calendar-setting.dto';
+import { CalendarSetting } from './entities/calendar-setting.entity';
 
 @ApiBearerAuth()
 @Roles(RoleEnum.user)

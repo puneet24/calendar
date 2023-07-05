@@ -1,28 +1,28 @@
+import * as bcrypt from 'bcryptjs';
+import { Exclude, Expose } from 'class-transformer';
+import { AuthProvidersEnum } from 'src/auth/auth-providers.enum';
+import { CalendarEvent } from 'src/calendar-events/entities/calendar-event.entity';
+import { CalendarSetting } from 'src/calendar-settings/entities/calendar-setting.entity';
+import { EntityHelper } from 'src/utils/entity-helper';
 import {
-  Column,
   AfterLoad,
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
   Index,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  BeforeInsert,
-  BeforeUpdate,
-  ManyToMany,
-  JoinTable,
-  OneToOne,
-  JoinColumn,
 } from 'typeorm';
 import { Role } from '../../roles/entities/role.entity';
 import { Status } from '../../statuses/entities/status.entity';
-import * as bcrypt from 'bcryptjs';
-import { EntityHelper } from 'src/utils/entity-helper';
-import { AuthProvidersEnum } from 'src/auth/auth-providers.enum';
-import { Exclude, Expose } from 'class-transformer';
-import { CalendarEvent } from 'src/calendar-events/entities/calendar-event.entity';
-import { CalendarSetting } from 'src/calendar-settings/entities/calendar-setting.entity';
 
 @Entity()
 export class User extends EntityHelper {

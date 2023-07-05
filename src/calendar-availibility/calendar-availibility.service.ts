@@ -1,15 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityCondition } from 'src/utils/types/entity-condition.type';
-import { IPaginationOptions } from 'src/utils/types/pagination-options';
-import { And, Between, DeepPartial, LessThanOrEqual, MoreThanOrEqual, Repository } from 'typeorm';
-import { NullableType } from '../utils/types/nullable.type';
-import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/entities/user.entity';
-import { findSlotsFromRrule } from 'src/utils/recurring-events-helper';
-import { Slot } from 'src/calendar-events/dto/slot';
-import { CalendarAvailibility } from './entities/calendar-availibility.entity';
+import { UsersService } from 'src/users/users.service';
+import { EntityCondition } from 'src/utils/types/entity-condition.type';
+import { DeepPartial, Repository } from 'typeorm';
+import { NullableType } from '../utils/types/nullable.type';
 import { CreateCalendarAvailibilityDto } from './dto/create-calendar-availibility.dto';
+import { CalendarAvailibility } from './entities/calendar-availibility.entity';
 
 @Injectable()
 export class CalendarAvailibilityService {

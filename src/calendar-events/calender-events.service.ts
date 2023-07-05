@@ -1,20 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityCondition } from 'src/utils/types/entity-condition.type';
-import { IPaginationOptions } from 'src/utils/types/pagination-options';
-import { And, ArrayContains, Between, DeepPartial, LessThanOrEqual, MoreThanOrEqual, Repository } from 'typeorm';
-import { NullableType } from '../utils/types/nullable.type';
-import { CalendarEvent } from './entities/calendar-event.entity';
-import { CreateCalendarEventDto } from './dto/create-calendar-event.dto';
-import { UsersService } from 'src/users/users.service';
-import { Slot } from './dto/slot';
-import { CalendarEventType } from 'src/calendar-event-types/entities/calendar-event-type.entity';
 import { CalendarEventTypeEnum } from 'src/calendar-event-types/calendar-event-type.enum';
-import { findSlotsFromRrule, getDuration } from 'src/utils/recurring-events-helper';
-import { CalendarSlot } from './dto/calendar-slot';
 import { CalendarSettingsService } from 'src/calendar-settings/calendar-settings.service';
-import { getBusySlotsTimeInterval, getFreeSlots, getFreeSlotsFromCalendar, getIntersectionOfSlots, getUnionSlots, updateTime } from 'src/utils/calendar-helper';
 import { User } from 'src/users/entities/user.entity';
+import { UsersService } from 'src/users/users.service';
+import { getBusySlotsTimeInterval, getFreeSlotsFromCalendar, getIntersectionOfSlots } from 'src/utils/calendar-helper';
+import { findSlotsFromRrule, getDuration } from 'src/utils/recurring-events-helper';
+import { ArrayContains, Between, Repository } from 'typeorm';
+import { NullableType } from '../utils/types/nullable.type';
+import { CalendarSlot } from './dto/calendar-slot';
+import { CreateCalendarEventDto } from './dto/create-calendar-event.dto';
+import { Slot } from './dto/slot';
+import { CalendarEvent } from './entities/calendar-event.entity';
 
 @Injectable()
 export class CalendarEventsService {

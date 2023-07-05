@@ -1,16 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityCondition } from 'src/utils/types/entity-condition.type';
-import { IPaginationOptions } from 'src/utils/types/pagination-options';
-import { And, Between, DeepPartial, LessThanOrEqual, MoreThanOrEqual, Repository } from 'typeorm';
-import { NullableType } from '../utils/types/nullable.type';
-import { UsersService } from 'src/users/users.service';
-import { CalendarSetting } from './entities/calendar-setting.entity';
-import { CreateUpdateCalendarSettingDto } from './dto/create-update-calendar-setting.dto';
-import { User } from 'src/users/entities/user.entity';
-import { findSlotsFromRrule } from 'src/utils/recurring-events-helper';
 import { Slot } from 'src/calendar-events/dto/slot';
-import { CalendarAvailibility } from 'src/calendar-availibility/entities/calendar-availibility.entity';
+import { User } from 'src/users/entities/user.entity';
+import { UsersService } from 'src/users/users.service';
+import { findSlotsFromRrule } from 'src/utils/recurring-events-helper';
+import { EntityCondition } from 'src/utils/types/entity-condition.type';
+import { DeepPartial, Repository } from 'typeorm';
+import { NullableType } from '../utils/types/nullable.type';
+import { CreateUpdateCalendarSettingDto } from './dto/create-update-calendar-setting.dto';
+import { CalendarSetting } from './entities/calendar-setting.entity';
 
 @Injectable()
 export class CalendarSettingsService {

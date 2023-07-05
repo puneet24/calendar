@@ -1,4 +1,3 @@
-import { CalendarEventTypeEnum } from "src/calendar-event-types/calendar-event-type.enum";
 import { Slot } from "./slot";
 
 export class CalendarSlot extends Slot {
