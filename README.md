@@ -69,6 +69,10 @@ Username: root
 Password: secret
 db: api
 
+## FYI ##
+I have Rrule for storing calendar availibility & recurring events:
+In order to generate Rrule easily, you can use : https://jakubroztocil.github.io/rrule/
+
 How to create new User?
 1. Please execute /email/register API with some date
 2. Check http://ec2-54-89-71-237.compute-1.amazonaws.com:1080/#/ for token
