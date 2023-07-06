@@ -54,6 +54,31 @@ Please fork this repository and reach out to Prakash when finished.
 
 After submission, we will conduct a 30 to 60 minute code review in person. We will ask you about your thinking and design choices.
 
+## How to Test API
+1. Swagger : http://ec2-54-89-71-237.compute-1.amazonaws.com/docs#/
+For trying out any API
+
+2. For accessing MailDev for user token:
+http://ec2-54-89-71-237.compute-1.amazonaws.com:1080/#/
+
+3. For accessing postgres DB:
+http://ec2-54-89-71-237.compute-1.amazonaws.com:8080/
+System: PostgresSQL
+Server: ec2-54-89-71-237.compute-1.amazonaws.com:5432
+Username: root
+Password: secret
+db: api
+
+How to create new User?
+1. Please execute /email/register API with some date
+2. Check http://ec2-54-89-71-237.compute-1.amazonaws.com:1080/#/ for token
+3. Click on Confirm button and you will see token, copy that token
+4. Execute /email/confirm API using above token as hash
+5. Execute /email/login API with email & password used while register.
+6. Copy token from response & click on Authorize button present on swagger top-right of the page & paste it.
+7. Can execute any APIS with easy now (Calendar-events, Calendar-Setting) 
+
+
 ## Quick run
 
 ```bash
