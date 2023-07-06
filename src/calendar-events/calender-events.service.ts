@@ -6,7 +6,7 @@ import { User } from 'src/users/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
 import { getBusySlotsTimeInterval, getFreeSlotsFromCalendar, getIntersectionOfSlots } from 'src/utils/calendar-helper';
 import { findSlotsFromRrule, getDuration } from 'src/utils/recurring-events-helper';
-import { ArrayContains, Between, Repository } from 'typeorm';
+import { ArrayContains, Repository } from 'typeorm';
 import { NullableType } from '../utils/types/nullable.type';
 import { CalendarSlot } from './dto/calendar-slot';
 import { CreateCalendarEventDto } from './dto/create-calendar-event.dto';
@@ -64,8 +64,7 @@ export class CalendarEventsService {
             where: {
                 users: {
                     id: userId
-                },
-                startDate: Between(fromDate, toDate),
+                }
             }
         });
     }

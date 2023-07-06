@@ -43,7 +43,7 @@ export class CalendarEventsController {
     @SerializeOptions({
         groups: ['me', 'admin'],
     })
-    @Get()
+    @Get('events')
     @HttpCode(HttpStatus.OK)
     public findAll(@Query('fromDate') fromDate: Date,
         @Query('toDate') toDate: Date, @Request() request): Promise<any> {
